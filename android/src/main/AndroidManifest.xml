@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.kalu.ocr.CaptureActivity"
+            android:name="com.wintone.idcard.CaptureActivity"
             android:configChanges="orientation"
             android:screenOrientation="landscape" />
     </application>

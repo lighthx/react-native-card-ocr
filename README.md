@@ -17,19 +17,22 @@
 
 1. 在 TARGETS->Build Settings->Library Search Path 添加 $(SRCROOT)/../node_modules/react-native-card-ocr/ios ，改为recursive,注意！注意！注意！
 2. 将 项目/node_modules/react-native-card-ocr/ios/JYBD_IDCardRecognition/Resources 整个文件夹添加到你的项目中；
-3. 在 info.plist下面加入相机权限   
+3. 将 项目项目/node_modules/react-native-card-ocr/ios/JYBD_IDCardRecognition/dicts/zocr0.lib 添加到你的项目中；
+4. 在 info.plist下面加入相机权限   
 ```
    <key>NSCameraUsageDescription</key>
    <string>相机权限文字描述</string>
 ```
-4. 在TARGETS和PROJECT 两处中的Build Setting 下找到 Enable Bitcode 将其设置为NO
-5. 在TARGETS和PROJECT 两处中Build Setting  搜索 ENABLE_TESTABILITY 改为NO
-6. 在TARGETS和PROJECT 两处中Build Setting  搜索 Dead Code Stripping Yes
+5. 在TARGETS和PROJECT 两处中的Build Setting 下找到 Enable Bitcode 将其设置为NO
+6. 在TARGETS和PROJECT 两处中Build Setting  搜索 ENABLE_TESTABILITY 改为NO
+7. 在TARGETS和PROJECT 两处中Build Setting  搜索 Dead Code Stripping Yes
+
 #### Android
 
-1. 打开 你的项目/android/app/src/main/AndroidManifest.xml 在<manifest ...>添加相机权限
+1. 打开 你的项目/android/app/src/main/AndroidManifest.xml 在<manifest ...>添加相机和写入权限
 ```
-<uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 ```
  
 
@@ -48,10 +51,10 @@ const bankCardInfo:bankCardInfo=await bankCardOcr()
 | bankNumber              | string  | 
 | bankName                | string  |  Only IOS
 
-### idCardOcr仅IOS可用
+### idCardOcr
 
 ```
-const idCardInfo:IdCardInfo=await bankCardOcr()
+const idCardInfo:IdCardInfo=await bankCardOcr("FRONT"||"BACK")
 ```
 
 #### idCardInfo 属性
@@ -68,7 +71,7 @@ const idCardInfo:IdCardInfo=await bankCardOcr()
 | type                    | string  |  正面|反面
 
 ## 注意
-1. 无法在模拟器下调用方法！！！SDK缺少相应X86文件，模拟器下不会crash。
+1. 无法在模拟器下调用方法！无法在模拟器下调用方法！无法在模拟器下调用方法！SDK缺少相应X86文件。
 2. IOS封装的[tiantianios/JYBDAVCapture](https://github.com/tiantianios/JYBDAVCapture)
 3. Android封装的[duaiyun1314/BankCardScanner](https://github.com/duaiyun1314/BankCardScanner)
 
@@ -77,5 +80,5 @@ const idCardInfo:IdCardInfo=await bankCardOcr()
 - [x] 银行卡识别支持Android&IOS
 - [x] 支持Typescript
 - [x] 支持Promise
-- [ ] 身份证识别支持Android
+- [x] 身份证识别支持Android
 

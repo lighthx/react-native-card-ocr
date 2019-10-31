@@ -19,9 +19,9 @@
 		94FD0AC52334A40E00092FB6 /* JYBDCardIDInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FD0AA22334A40E00092FB6 /* JYBDCardIDInfo.m */; };
 		94FD0AC62334A40E00092FB6 /* JYBDNewFormeScaningV.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FD0AA62334A40E00092FB6 /* JYBDNewFormeScaningV.m */; };
 		94FD0ACA2334A40E00092FB6 /* IDCardRectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FD0AAD2334A40E00092FB6 /* IDCardRectManager.m */; };
-		94FD0AFE2334AB1400092FB6 /* libbexbankcard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FD0AAB2334A40E00092FB6 /* libbexbankcard.a */; settings = {ATTRIBUTES = (Weak, ); }; };
-		94FD0AFF2334AB1400092FB6 /* libexbankcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FD0AAA2334A40E00092FB6 /* libexbankcardios.a */; settings = {ATTRIBUTES = (Weak, ); }; };
-		94FD0B002334AB1400092FB6 /* libexidcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FD0AA92334A40E00092FB6 /* libexidcardios.a */; settings = {ATTRIBUTES = (Weak, ); }; };
+		94FD0AFE2334AB1400092FB6 /* libbexbankcard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FD0AAB2334A40E00092FB6 /* libbexbankcard.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		94FD0AFF2334AB1400092FB6 /* libexbankcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FD0AAA2334A40E00092FB6 /* libexbankcardios.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		94FD0B002334AB1400092FB6 /* libexidcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FD0AA92334A40E00092FB6 /* libexidcardios.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		B3E7B58A1CC2AC0600A0062D /* CardOcr.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* CardOcr.m */; };
 /* End PBXBuildFile section */
 
@@ -39,9 +39,6 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libCardOcr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCardOcr.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		94FD09FF2334753300092FB6 /* libexidcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libexidcardios.a; path = ../../ios/JYBD_IDCardRecognition/Classes/exbankcardcore/libexidcardios.a; sourceTree = "<group>"; };
-		94FD0A002334753300092FB6 /* libbexbankcard.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbexbankcard.a; path = ../../ios/JYBD_IDCardRecognition/Classes/exbankcardcore/libbexbankcard.a; sourceTree = "<group>"; };
-		94FD0A012334753300092FB6 /* libexbankcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libexbankcardios.a; path = ../../ios/JYBD_IDCardRecognition/Classes/exbankcardcore/libexbankcardios.a; sourceTree = "<group>"; };
 		94FD0A882334A40E00092FB6 /* UIAlertController+IDCardExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+IDCardExtend.h"; sourceTree = "<group>"; };
 		94FD0A892334A40E00092FB6 /* UIImage+IDCardExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+IDCardExtend.m"; sourceTree = "<group>"; };
 		94FD0A8A2334A40E00092FB6 /* UIAlertController+IDCardExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+IDCardExtend.m"; sourceTree = "<group>"; };
@@ -125,9 +122,6 @@
 		94FD09FE2334753300092FB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				94FD0A002334753300092FB6 /* libbexbankcard.a */,
-				94FD0A012334753300092FB6 /* libexbankcardios.a */,
-				94FD09FF2334753300092FB6 /* libexidcardios.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

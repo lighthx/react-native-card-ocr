@@ -6,6 +6,7 @@ RCT_EXPORT_MODULE()
 
 
 RCT_REMAP_METHOD(idCardOcr,
+                 type:(NSString *)type
                  findEventsWithResolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject)
 {
@@ -31,14 +32,14 @@ RCT_REMAP_METHOD(idCardOcr,
 //        @property (nonatomic,copy) NSString *valid; //有效期
         resolve(@{
                   @"image":filePath,
-                  @"idCard":info.num,
-                  @"name":info.name,
-                  @"gender":info.gender,
-                  @"nation":info.nation,
-                  @"address":info.address,
-                  @"issue":info.issue,
-                  @"valid":info.valid,
-                  @"type":info.type==1?@"正面":@"反面"
+                  @"idCard":info.num?info.num:@"",
+                  @"name":info.name?info.name:@"",
+                  @"gender":info.gender?info.gender:@"",
+                  @"nation":info.nation?info.nation:@"",
+                  @"address":info.address?info.address:@"",
+                  @"issue":info.issue?info.issue:@"",
+                  @"valid":info.valid?info.valid:@"",
+                  @"type":info.type==info.num?@"正面":@"反面"
                   });
     };
     dispatch_async(dispatch_get_main_queue(), ^{

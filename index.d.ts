@@ -18,7 +18,12 @@ export interface IdCardInfo{
  */
 export function bankCardOcr():Promise<BankCardInfo>;
 
+
 /**
  * 身份证识别---安卓还未集成
  */
-export function idCardOcr():Promise<IdCardInfo>;
+export enum IdCardType {
+    FRONT="FRONT",
+    BACK="BACK"
+}
+export function idCardOcr(IdCardType):Promise<IdCardInfo>;
