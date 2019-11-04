@@ -26,4 +26,4 @@ export enum IdCardType {
     FRONT="FRONT",
     BACK="BACK"
 }
-export function idCardOcr(IdCardType):Promise<IdCardInfo>;
+export function idCardOcr(idCardType:IdCardType):Promise<IdCardInfo>;
