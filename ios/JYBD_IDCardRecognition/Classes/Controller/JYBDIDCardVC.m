@@ -68,7 +68,7 @@
         // 添加自定义的扫描界面（中间有一个镂空窗口和来回移动的扫描线）
         JYBDNewFormeScaningV * IDCardScaningView = [[JYBDNewFormeScaningV alloc]initWithFrame:CGRectMake(0,0, self.view.frame.size.width-70*width, 400*width)];
         IDCardScaningView.center = self.view.center;
-        IDCardScaningView.scanType = JYBD_IDScanType;
+        IDCardScaningView.scanType = _scanType;
         [self.view addSubview:IDCardScaningView];
         IDCardScaningView.turnOnOrOffClick = ^(BOOL isSelectState)
         {
@@ -120,6 +120,7 @@
         _cameraManager = [[JYBDScanCardManage alloc] init];
         
     }
+    _cameraManager.scanType1=_scanType;
     return _cameraManager;
 }
 

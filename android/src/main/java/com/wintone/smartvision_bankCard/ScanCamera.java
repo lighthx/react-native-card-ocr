@@ -352,34 +352,34 @@ public class ScanCamera extends Activity implements Callback, PreviewCallback {
             int[] bRotated = new int[1];
             int[] pLineWarp = new int[32000];
             int result = this.api.RecognizeNV21(data, parameters.getPreviewSize().width, parameters.getPreviewSize().height, isBorders, recogval, 30, bRotated, pLineWarp);
-            if (isBorders[0] == 1) {
-                if (this.myView != null) {
-                    this.myView.setLeftLine(1);
-                }
-            } else if (this.myView != null) {
-                this.myView.setLeftLine(0);
-            }
-            if (isBorders[1] == 1) {
-                if (this.myView != null) {
-                    this.myView.setTopLine(1);
-                }
-            } else if (this.myView != null) {
-                this.myView.setTopLine(0);
-            }
-            if (isBorders[2] == 1) {
-                if (this.myView != null) {
-                    this.myView.setRightLine(1);
-                }
-            } else if (this.myView != null) {
-                this.myView.setRightLine(0);
-            }
-            if (isBorders[3] == 1) {
-                if (this.myView != null) {
-                    this.myView.setBottomLine(1);
-                }
-            } else if (this.myView != null) {
-                this.myView.setBottomLine(0);
-            }
+//            if (isBorders[0] == 1) {
+//                if (this.myView != null) {
+//                    this.myView.setLeftLine(1);
+//                }
+//            } else if (this.myView != null) {
+//                this.myView.setLeftLine(0);
+//            }
+//            if (isBorders[1] == 1) {
+//                if (this.myView != null) {
+//                    this.myView.setTopLine(1);
+//                }
+//            } else if (this.myView != null) {
+//                this.myView.setTopLine(0);
+//            }
+//            if (isBorders[2] == 1) {
+//                if (this.myView != null) {
+//                    this.myView.setRightLine(1);
+//                }
+//            } else if (this.myView != null) {
+//                this.myView.setRightLine(0);
+//            }
+//            if (isBorders[3] == 1) {
+//                if (this.myView != null) {
+//                    this.myView.setBottomLine(1);
+//                }
+//            } else if (this.myView != null) {
+//                this.myView.setBottomLine(0);
+//            }
             if (isBorders[0] != 1 || isBorders[1] != 1 || isBorders[2] != 1 || isBorders[3] != 1) {
                 this.counterCut++;
                 if (this.counterCut == 5) {

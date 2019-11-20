@@ -44,14 +44,17 @@ public class CardOcrModule extends ReactContextBaseJavaModule {
                 switch (resultCode) {
                     case 250:
                         String bankNumber = data.getExtras().getString("StringR");
+                        bankNumber=bankNumber.replaceAll("\u0000","");
                         WritableMap _map = Arguments.createMap();
+                        Log.e("bankNumber",bankNumber);
                         _map.putString("bankNumber", bankNumber);
                         _promise.resolve(_map);
+                        break;
                     case 2001:
                         final Bundle extras = data.getExtras();
                         final EXOCRModel result = extras.getParcelable(CaptureActivity.EXTRA_SCAN_RESULT);
                         WritableMap map=Arguments.createMap();
-                        Log.e("kalu", "result = " + result.toString());
+                        Log.e("kalu", "result = " + result);
                         map.putString("idCard",result.cardnum);
                         map.putString("image",result.bitmapPath);
                         map.putString("name",result.name);
@@ -62,6 +65,7 @@ public class CardOcrModule extends ReactContextBaseJavaModule {
                         map.putString("valid",result.validdate);
                         map.putString("type",type.equals("FRONT")?"正面":"反面");
                         _promise.resolve(map);
+                        break;
                     default:
                         if(_promise!=null){
                             _promise.reject("400", "cancel");

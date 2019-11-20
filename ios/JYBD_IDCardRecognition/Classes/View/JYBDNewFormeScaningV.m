@@ -173,9 +173,11 @@
 - (void)setScanType:(JYBDScaningType)scanType
 {
     _scanType = scanType;
-    if (scanType == JYBD_IDScanType)
+    if (scanType == JYBD_IDScanFrontType)
     {
-        self.scanLab.text = @"扫描身份证";
+        self.scanLab.text = @"扫描身份证人像面";
+    }else if(scanType ==JYBD_IDScanBackType){
+        self.scanLab.text= @"扫描身份证国徽面";
     }
     else if (scanType == JYBD_BankScanType)
     {

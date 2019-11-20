@@ -23,14 +23,14 @@
 @implementation JYBDScanCardManage
 
 - (BOOL)configBankScanManager {
-    self.scanType = JYBDBankScanType;
+    self.scanType = JYBD_IDScanBackType;
     return [self configSession];
 }
 
 - (BOOL)configIDScanManager {
     [self configIDScan];
     self.verify = YES;
-    self.scanType = JYBDIDScanType;
+    self.scanType = self.scanType1;
     return [self configSession];
 }
 
@@ -76,13 +76,16 @@
         }
         CVBufferRetain(imageBuffer);
         if(CVPixelBufferLockBaseAddress(imageBuffer, 0) == kCVReturnSuccess) {
-            switch (self.scanType) {
-                case JYBDIDScanType: {
+            switch (self.scanType1) {
+                case JYBD_IDScanBackType: {
                     [self parseIDScanImageBuffer:imageBuffer];
                 }
                     break;
-                    
-                case JYBDBankScanType: {
+                    case JYBD_IDScanFrontType: {
+                        [self parseIDScanImageBuffer:imageBuffer];
+                    }
+                        break;
+                case JYBD_BankScanType: {
                     [self parseBankImageBuffer:imageBuffer];
                 }
                     break;
@@ -205,22 +208,28 @@
         
         if (iDInfo)
         {// 读取到身份证信息，实例化出IDInfo对象后，截取身份证的有效区域，获取到图像
-            NSLog(@"\n正面\n姓名：%@\n性别：%@\n民族：%@\n住址：%@\n公民身份证号码：%@\n\n反面\n签发机关：%@\n有效期限：%@",iDInfo.name,iDInfo.gender,iDInfo.nation,iDInfo.address,iDInfo.num,iDInfo.issue,iDInfo.valid);
-            
-            self.isHasResult = YES;
-            if ([self.captureSession isRunning]) {
-                [self.captureSession stopRunning];
+        
+            if(_scanType1==JYBD_IDScanFrontType&iDInfo.num==nil){
+                NSLog(@"选择头像面却用的国徽面");
+            }else  if(_scanType1==JYBD_IDScanBackType&iDInfo.num!=nil){
+                NSLog(@"选择国徽面却用的头像面");
+            }else{
+                self.isHasResult = YES;
+                           if ([self.captureSession isRunning]) {
+                               [self.captureSession stopRunning];
+                           }
+                           UIImage *image = [UIImage getImageStream:imageBuffer];
+                           AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                           dispatch_async(dispatch_get_main_queue(), ^{
+                               
+                               //  [self.bankScanSuccess sendNext:model];
+                               if (self.finish)
+                               {
+                                   self.finish(iDInfo, image);
+                               }
+                           });
             }
-            UIImage *image = [UIImage getImageStream:imageBuffer];
-            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                //  [self.bankScanSuccess sendNext:model];
-                if (self.finish)
-                {
-                    self.finish(iDInfo, image);
-                }
-            });
+           
         }
     }
     

@@ -9,7 +9,8 @@
 
 typedef enum : NSUInteger {
     JYBD_BankScanType,
-    JYBD_IDScanType,
+    JYBD_IDScanBackType,
+    JYBD_IDScanFrontType
 } JYBDScaningType;
 
 @interface JYBDNewFormeScaningV : UIView

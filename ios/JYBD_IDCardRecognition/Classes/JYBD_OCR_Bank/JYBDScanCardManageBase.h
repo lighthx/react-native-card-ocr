@@ -9,17 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-
-typedef enum : NSUInteger {
-    JYBDBankScanType,
-    JYBDIDScanType,
-} JYBDScanType;
+#import "JYBDNewFormeScaningV.h"
 
 @interface JYBDScanCardManageBase : NSObject<AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate,AVCaptureMetadataOutputObjectsDelegate>
 
 @property (nonatomic, assign) BOOL                      verify;
 
-@property (nonatomic, assign) JYBDScanType scanType;
+@property (nonatomic, assign) JYBDScaningType scanType;
 
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 

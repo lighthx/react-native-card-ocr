@@ -12,6 +12,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -19,8 +20,12 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.wintone.R;
+import com.wintone.view.ViewfinderView;
 
 import exocr.exocrengine.EXOCRModel;
 import exocr.idcard.CameraManager;
@@ -28,6 +33,7 @@ import exocr.idcard.CaptureHandler;
 import exocr.idcard.PreviewCallback;
 import exocr.idcard.ViewUtil;
 import exocr.view.CaptureView;
+//import exocr.view.CaptureView;
 
 /**
  * description: 证件扫描
@@ -37,7 +43,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
     public static final int RESULT_CODE = 2001;
     public static final String INTNET_FRONT = "ShouldFront";
-
+    private ViewfinderView myView;
     public static final String EXTRA_SCAN_RESULT = "exocr.idcard.scanResult";
     private static final String TAG = CaptureActivity.class.getSimpleName();
     private CaptureHandler handler;
@@ -45,16 +51,21 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
     public static final int PHOTO_ID = 0x1025;
     private boolean bPhotoReco;
-
+    private RelativeLayout re_c;
     private boolean bshouleFront;
     private boolean bCamera;
-
+    private ImageButton flash;
+    private ImageButton back;
     private final ShutterCallback shutterCallback = new ShutterCallback() {
         public void onShutter() {
             AudioManager mgr = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
             mgr.playSoundEffect(AudioManager.FLAG_PLAY_SOUND);
         }
     };
+    private int width;
+    private int height;
+    private boolean isFatty = false;
+    private Camera camera;
 
     @Override
     public void finish() {
@@ -96,23 +107,72 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
                 Log.d(TAG, "反面");
             }
         }
+        findView();
+    }
+    private void findView(){
+        this.back = (ImageButton) findViewById(R.id.back_camera);
+        this.flash = (ImageButton) findViewById(R.id.flash_camera);
+        DisplayMetrics metric = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metric);
+        this.width = metric.widthPixels;
+        this.height = metric.heightPixels;
+        if (this.width * 3 == this.height * 4) {
+            this.isFatty = true;
+        }
+        int back_w = (int) (((double) this.width) * 0.066796875d);
+        int back_h = back_w;
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(back_w, back_h);
+        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+        int Fheight = this.height;
+        if (this.isFatty) {
+            Fheight = (int) (((double) this.height) * 0.75d);
+        }
+        layoutParams.leftMargin = (int) ((((((double) this.width) - ((((double) Fheight) * 0.8d) * 1.585d)) / 2.0d) - ((double) back_h)) / 2.0d);
+        layoutParams.bottomMargin = (int) (((double) this.height) * 0.10486111111111111d);
+        this.back.setLayoutParams(layoutParams);
+        int flash_w = (int) (((double) this.width) * 0.066796875d);
+        layoutParams = new RelativeLayout.LayoutParams(flash_w, flash_w);
+        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
+        if (this.isFatty) {
+            Fheight = (int) (((double) this.height) * 0.75d);
+        }
+        layoutParams.leftMargin = (int) ((((((double) this.width) - ((((double) Fheight) * 0.8d) * 1.585d)) / 2.0d) - ((double) back_h)) / 2.0d);
+        layoutParams.topMargin = (int) (((double) this.height) * 0.10486111111111111d);
+        this.flash.setLayoutParams(layoutParams);
+        this.back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                CaptureActivity.this.finish();
+            }
+        });
+        this.flash.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(CameraManager.get()!=null){
+                    CameraManager.get().switchFlashlight();
+                }
+            }
+        });
+        this.re_c = (RelativeLayout) findViewById(R.id.re_c);
+        this.myView = new ViewfinderView(this, this.width, this.height,this.isFatty);
+        this.re_c.addView(this.myView);
     }
 
-    public static boolean hardwareSupportCheck() {
+    public  boolean hardwareSupportCheck() {
         // Camera needs to open
-        Camera c = null;
         boolean ret = true;
         try {
-            c = Camera.open();
+            this.camera = Camera.open();
         } catch (RuntimeException e) {
             // throw new RuntimeException();
             ret = false;
         }
-        if (c == null) { // 没有背摄像头
+        if (this.camera == null) { // 没有背摄像头
             return false;
         }
         if (ret) {
-            c.release();
+            this.camera.release();
+            this.camera=null;
         }
         return ret;
     }
@@ -220,10 +280,17 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             return;
 
         if (result.isDecodeSucc()) {
-            Intent intent = new Intent();
-            intent.putExtra(EXTRA_SCAN_RESULT, result);
-            setResult(RESULT_CODE, intent);
-            finish();
+            final boolean isFront = getIntent().getBooleanExtra(INTNET_FRONT, true);
+            if(!isFront&result.cardnum!=null){
+                return;
+            }else if(isFront&result.cardnum==null){
+                return;
+            }else {
+                Intent intent = new Intent();
+                intent.putExtra(EXTRA_SCAN_RESULT, result);
+                setResult(RESULT_CODE, intent);
+                finish();
+            }
         } else {
             Message message = Message.obtain(this.getHandler(), PreviewCallback.PARSE_FAIL);
             message.sendToTarget();

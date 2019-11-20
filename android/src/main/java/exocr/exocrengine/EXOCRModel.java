@@ -145,33 +145,34 @@ public final class EXOCRModel implements Parcelable {
     public void SetBitmap(final Context context, Bitmap bitmap) {
 
         try {
+            if(bitmap!=null) {
+                final String local;
 
-            final String local;
+                if (type == 1) {
+                    local = context.getFilesDir().getAbsolutePath() + "/card_front.jpg";
+                } else if (type == 2) {
+                    local = context.getFilesDir().getAbsolutePath() + "/card_back.jpg";
+                } else {
+                    return;
+                }
 
-            if (type == 1) {
-                local = context.getFilesDir().getAbsolutePath() + "/card_front.jpg";
-            } else if (type == 2) {
-                local = context.getFilesDir().getAbsolutePath() + "/card_back.jpg";
-            } else {
-                return;
-            }
+                final File file = new File(local);
+                if (!file.exists()) {
+                    file.getParentFile().mkdirs();
+                }
+                if (file.exists()) {
+                    file.delete();
+                }
+                file.createNewFile();
+                FileOutputStream fos = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                fos.flush();
+                fos.close();
+                this.bitmapPath = local;
 
-            final File file = new File(local);
-            if (!file.exists()) {
-                file.getParentFile().mkdirs();
-            }
-            if (file.exists()) {
-                file.delete();
-            }
-            file.createNewFile();
-            FileOutputStream fos = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-            fos.flush();
-            fos.close();
-            this.bitmapPath = local;
-
-            if (null != bitmap) {
-                bitmap.recycle();
+                if (null != bitmap) {
+                    bitmap.recycle();
+                }
             }
 
         } catch (IOException e) {

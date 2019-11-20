@@ -115,6 +115,7 @@
         _cameraManager = [[JYBDScanCardManage alloc] init];
         
     }
+    _cameraManager.scanType1=JYBD_BankScanType;
     return _cameraManager;
 }
 

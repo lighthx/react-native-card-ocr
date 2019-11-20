@@ -7,6 +7,7 @@
 //
 
 #import "JYBDScanCardManageBase.h"
+#import "JYBDNewFormeScaningV.h"
 
 @interface JYBDScanCardManage : JYBDScanCardManageBase
 
@@ -46,6 +47,7 @@
 //重置曝光
 - (void)resetFocusAndExposureModes;
 
+@property (nonatomic, assign) JYBDScaningType scanType1;
 
 
 

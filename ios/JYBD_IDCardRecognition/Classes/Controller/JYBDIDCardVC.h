@@ -13,4 +13,6 @@
 
 @property (nonatomic,copy) void(^finish)(JYBDCardIDInfo * info,UIImage *image);
 
+@property (nonatomic, assign) JYBDScaningType scanType;
+
 @end
