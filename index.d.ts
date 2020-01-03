@@ -20,7 +20,7 @@ export function bankCardOcr():Promise<BankCardInfo>;
 
 
 /**
- * 身份证识别---安卓还未集成
+ * 身份证识别
  */
 export enum IdCardType {
     FRONT="FRONT",

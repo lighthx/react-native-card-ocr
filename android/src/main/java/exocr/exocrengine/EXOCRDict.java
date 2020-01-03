@@ -41,7 +41,16 @@ public final class EXOCRDict {
         Log.e("path",path);
          int code = EXOCREngine.nativeInit(bytes);
         Log.e("kalu", "checkDict ==> code = " + code);
+        if(code!=0){
+            new Thread(){
+                @Override
+                public void run() {
+                    EXOCRDict.checkDict(path);
+                }
+            }.start();
+        }
         return true;
+
     }
 
     private static final boolean checkFile(final Context context, final String pathname) {
