@@ -78,7 +78,7 @@ public final class ViewfinderView extends View {
         int width = canvas.getWidth();
         int height = canvas.getHeight();
         if (width <= height || this.boo) {
-            t = this.h / 5;
+            t = this.h / 9;
             b = this.h - t;
             l = (this.w - ((int) (((double) (b - t)) * 1.585d))) / 2;
             r = this.w - l;
@@ -88,7 +88,7 @@ public final class ViewfinderView extends View {
             b -= 19;
             this.frame = new Rect(l, t, r, b);
         } else {
-            t = this.h / 10;
+            t = this.h / 16;
             b = this.h - t;
             l = (this.w - ((int) (((double) (b - t)) * 1.585d))) / 2;
             r = this.w - l;

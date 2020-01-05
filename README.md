@@ -4,7 +4,7 @@
 
 `$ npm install https://github.com/lighthx/react-native-card-ocr.git --save`
 或者
-`$ yarn add https://github.com/lighthx/react-native-card-ocr.git `
+`$ npm yarn add https://github.com/lighthx/react-native-card-ocr.git `
 
 ### 配置
 

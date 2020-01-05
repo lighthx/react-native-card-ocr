@@ -281,6 +281,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
         if (result.isDecodeSucc()) {
             final boolean isFront = getIntent().getBooleanExtra(INTNET_FRONT, true);
+            if(result.bitmapPath==null){
+                return;
+            }else
             if(!isFront&result.cardnum!=null){
                 return;
             }else if(isFront&result.cardnum==null){
