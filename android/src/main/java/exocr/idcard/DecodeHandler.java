@@ -1,6 +1,7 @@
 package exocr.idcard;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
@@ -12,6 +13,7 @@ import android.util.Log;
 
 import com.wintone.idcard.CaptureActivity;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -79,7 +81,8 @@ final class DecodeHandler extends Handler {
                 Bitmap imcard = EXOCREngine.nativeGetIDCardStdImg(data, width, height, obtain, obtain.length, rects);
                 //如果需要保存图像，请您打开保存图像的语句
                 //try{saveBitmap(imcard); }catch (IOException e) {e.printStackTrace();}
-                idcard.SetBitmap(activity.getApplicationContext(), imcard);
+                Bitmap originBitmap=getOriginBitmap(data,width,height);
+                idcard.SetBitmap(activity.getApplicationContext(), originBitmap);
                 //保存各个条目的矩形框
                 idcard.setRects(rects);
                 if (idcard.type == 1) {
@@ -115,6 +118,16 @@ final class DecodeHandler extends Handler {
 
         if (nNum > iCnt) return 1;
         else return 0;
+    }
+
+    private Bitmap getOriginBitmap(byte[] data, int width, int height) {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        Rect frame = new Rect(0, 0, width - 1, height - 1);
+        YuvImage img = new YuvImage(data, ImageFormat.NV21, width, height, null);
+        img.compressToJpeg(frame, 100, out);
+        byte[] imageBytes = out.toByteArray();
+        Bitmap image = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+        return  image;
     }
 
     // save to jpeg
