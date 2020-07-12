@@ -1,5 +1,5 @@
 # react-native-card-ocr
-在react-native@0.59.10下做的封装,理论向下兼容；
+在react-native@0.6+；
 ## Getting started
 
 `$ npm install https://github.com/lighthx/react-native-card-ocr.git --save`

@@ -19,9 +19,6 @@
 		94FD0AC52334A40E00092FB6 /* JYBDCardIDInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FD0AA22334A40E00092FB6 /* JYBDCardIDInfo.m */; };
 		94FD0AC62334A40E00092FB6 /* JYBDNewFormeScaningV.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FD0AA62334A40E00092FB6 /* JYBDNewFormeScaningV.m */; };
 		94FD0ACA2334A40E00092FB6 /* IDCardRectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FD0AAD2334A40E00092FB6 /* IDCardRectManager.m */; };
-		94FD0AFE2334AB1400092FB6 /* libbexbankcard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FD0AAB2334A40E00092FB6 /* libbexbankcard.a */; settings = {ATTRIBUTES = (Required, ); }; };
-		94FD0AFF2334AB1400092FB6 /* libexbankcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FD0AAA2334A40E00092FB6 /* libexbankcardios.a */; settings = {ATTRIBUTES = (Required, ); }; };
-		94FD0B002334AB1400092FB6 /* libexidcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FD0AA92334A40E00092FB6 /* libexidcardios.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		B3E7B58A1CC2AC0600A0062D /* CardOcr.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* CardOcr.m */; };
 /* End PBXBuildFile section */
 
@@ -66,22 +63,8 @@
 		94FD0AA42334A40E00092FB6 /* JYBDCardIDInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDCardIDInfo.h; sourceTree = "<group>"; };
 		94FD0AA62334A40E00092FB6 /* JYBDNewFormeScaningV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDNewFormeScaningV.m; sourceTree = "<group>"; };
 		94FD0AA72334A40E00092FB6 /* JYBDNewFormeScaningV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDNewFormeScaningV.h; sourceTree = "<group>"; };
-		94FD0AA92334A40E00092FB6 /* libexidcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libexidcardios.a; sourceTree = "<group>"; };
-		94FD0AAA2334A40E00092FB6 /* libexbankcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libexbankcardios.a; sourceTree = "<group>"; };
-		94FD0AAB2334A40E00092FB6 /* libbexbankcard.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbexbankcard.a; sourceTree = "<group>"; };
 		94FD0AAD2334A40E00092FB6 /* IDCardRectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDCardRectManager.m; sourceTree = "<group>"; };
 		94FD0AAE2334A40E00092FB6 /* IDCardRectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCardRectManager.h; sourceTree = "<group>"; };
-		94FD0AB02334A40E00092FB6 /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; path = zocr0.lib; sourceTree = "<group>"; };
-		94FD0AB22334A40E00092FB6 /* scaningline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scaningline@2x.png"; sourceTree = "<group>"; };
-		94FD0AB32334A40E00092FB6 /* scaningline@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scaningline@3x.png"; sourceTree = "<group>"; };
-		94FD0AB42334A40E00092FB6 /* idcard_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = idcard_back.png; sourceTree = "<group>"; };
-		94FD0AB52334A40E00092FB6 /* flashlightscan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlightscan@3x.png"; sourceTree = "<group>"; };
-		94FD0AB62334A40E00092FB6 /* flashlightscan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlightscan@2x.png"; sourceTree = "<group>"; };
-		94FD0AB72334A40E00092FB6 /* flashlightscan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flashlightscan.png; sourceTree = "<group>"; };
-		94FD0AB82334A40E00092FB6 /* scaningbgimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scaningbgimage.png; sourceTree = "<group>"; };
-		94FD0AB92334A40E00092FB6 /* scaningbgimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scaningbgimage@2x.png"; sourceTree = "<group>"; };
-		94FD0ABA2334A40E00092FB6 /* scaningbgimage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scaningbgimage@3x.png"; sourceTree = "<group>"; };
-		94FD0ABB2334A40E00092FB6 /* scaningline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scaningline.png; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* CardOcr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardOcr.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* CardOcr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardOcr.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,9 +74,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94FD0AFE2334AB1400092FB6 /* libbexbankcard.a in Frameworks */,
-				94FD0AFF2334AB1400092FB6 /* libexbankcardios.a in Frameworks */,
-				94FD0B002334AB1400092FB6 /* libexidcardios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,8 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				94FD0A862334A40E00092FB6 /* Classes */,
-				94FD0AAF2334A40E00092FB6 /* dicts */,
-				94FD0AB12334A40E00092FB6 /* Resources */,
 			);
 			path = JYBD_IDCardRecognition;
 			sourceTree = "<group>";
@@ -145,7 +123,6 @@
 				94FD0A9A2334A40E00092FB6 /* libexidcard */,
 				94FD0AA02334A40E00092FB6 /* Model */,
 				94FD0AA52334A40E00092FB6 /* View */,
-				94FD0AA82334A40E00092FB6 /* exbankcardcore */,
 				94FD0AAC2334A40E00092FB6 /* Tool */,
 			);
 			path = Classes;
@@ -220,16 +197,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		94FD0AA82334A40E00092FB6 /* exbankcardcore */ = {
-			isa = PBXGroup;
-			children = (
-				94FD0AA92334A40E00092FB6 /* libexidcardios.a */,
-				94FD0AAA2334A40E00092FB6 /* libexbankcardios.a */,
-				94FD0AAB2334A40E00092FB6 /* libbexbankcard.a */,
-			);
-			path = exbankcardcore;
-			sourceTree = "<group>";
-		};
 		94FD0AAC2334A40E00092FB6 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,31 +204,6 @@
 				94FD0AAE2334A40E00092FB6 /* IDCardRectManager.h */,
 			);
 			path = Tool;
-			sourceTree = "<group>";
-		};
-		94FD0AAF2334A40E00092FB6 /* dicts */ = {
-			isa = PBXGroup;
-			children = (
-				94FD0AB02334A40E00092FB6 /* zocr0.lib */,
-			);
-			path = dicts;
-			sourceTree = "<group>";
-		};
-		94FD0AB12334A40E00092FB6 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				94FD0AB22334A40E00092FB6 /* scaningline@2x.png */,
-				94FD0AB32334A40E00092FB6 /* scaningline@3x.png */,
-				94FD0AB42334A40E00092FB6 /* idcard_back.png */,
-				94FD0AB52334A40E00092FB6 /* flashlightscan@3x.png */,
-				94FD0AB62334A40E00092FB6 /* flashlightscan@2x.png */,
-				94FD0AB72334A40E00092FB6 /* flashlightscan.png */,
-				94FD0AB82334A40E00092FB6 /* scaningbgimage.png */,
-				94FD0AB92334A40E00092FB6 /* scaningbgimage@2x.png */,
-				94FD0ABA2334A40E00092FB6 /* scaningbgimage@3x.png */,
-				94FD0ABB2334A40E00092FB6 /* scaningline.png */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
