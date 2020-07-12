@@ -7,34 +7,7 @@
 `$ npm yarn add https://github.com/lighthx/react-native-card-ocr.git `
 
 ### 配置
-
-`$ react-native link react-native-card-ocr`
-
-### 额外配置
-
-
-#### iOS
-
-1. 在 TARGETS->Build Settings->Library Search Path 添加 $(SRCROOT)/../node_modules/react-native-card-ocr/ios ，改为recursive,注意！注意！注意！
-2. 将 项目/node_modules/react-native-card-ocr/ios/JYBD_IDCardRecognition/Resources 整个文件夹添加到你的项目中；
-3. 将 项目项目/node_modules/react-native-card-ocr/ios/JYBD_IDCardRecognition/dicts/zocr0.lib 添加到你的项目中；
-4. 在 info.plist下面加入相机权限   
-```
-   <key>NSCameraUsageDescription</key>
-   <string>相机权限文字描述</string>
-```
-5. 在TARGETS和PROJECT 两处中的Build Setting 下找到 Enable Bitcode 将其设置为NO
-6. 在TARGETS和PROJECT 两处中Build Setting  搜索 ENABLE_TESTABILITY 改为NO
-7. 在TARGETS和PROJECT 两处中Build Setting  搜索 Dead Code Stripping Yes
-
-#### Android
-
-1. 打开 你的项目/android/app/src/main/AndroidManifest.xml 在<manifest ...>添加相机和写入权限
-```
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-```
- 
+`在ios文件夹下面执行 pod install`
 
 ## Usage 使用方法
 ```javascript
